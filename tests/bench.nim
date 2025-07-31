@@ -45,10 +45,10 @@ proc triangulatePoints[P, T](points: var seq[array[2, T]]): Delaunator[T] =
 
 when isMainModule:
   let
-    distNames = @["uniform", "gaussian", "grid", "degenerate"]
-    f32Distributions = @[uniform[float32], gaussian[float32], grid[float32], degenerate[float32]]
-    f64Distributions = @[uniform[float64], gaussian[float64], grid[float64], degenerate[float64]]
-    counts = @[20_000, 100_000, 200_000, 500_000, 1_000_000]
+    distNames = ["uniform", "gaussian", "grid", "degenerate"]
+    f32Distributions = [uniform[float32], gaussian[float32], grid[float32], degenerate[float32]]
+    f64Distributions = [uniform[float64], gaussian[float64], grid[float64], degenerate[float64]]
+    counts = [20_000, 100_000, 200_000, 500_000, 1_000_000]
 
   randomize()
 
