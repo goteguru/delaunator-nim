@@ -680,14 +680,9 @@ proc update*[T](this: var Delaunator) =
   this.halfedges = this.d_halfedges[0 ..< this.trianglesLen]
 
 
-proc fromCoords*[T](coordinates: var seq[T]): Delaunator[T] =
+proc fromCoords*[T:SomeFloat](coordinates: var seq[T]): Delaunator[T] =
   ## Returns a *Delaunator* object constructed from `coordinates`, a flattened
   ## sequence of points representing site locations.
-
-  # Could not figure out how to constrain T to SomeFloat, so using 'add' to test coordinates as
-  # a seq[float32|float64]. Errors for example when coordinates is seq[int32].
-  when not compiles(coordinates.add(float64(1.0))):
-    {.error: "Coordinates must be seq[float32] or seq[float64] but got " & $typeof(coordinates) .}
   result = Delaunator[T](coords: coordinates)
   update[T](result)
 
